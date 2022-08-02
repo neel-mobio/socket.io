@@ -1,17 +1,26 @@
 {
   "name": "socket.io",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "RealTime Chat Application",
+  "main": "server.js",
   "scripts": {
-    "start": "node ./bin/www",
-    "test":"npm run test"
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neel-mobio/socket.io.git"
+  },
+  "author": "Neel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/neel-mobio/socket.io/issues"
+  },
+  "homepage": "https://github.com/neel-mobio/socket.io#readme",
   "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+    "express": "^4.18.1",
+    "moment": "^2.29.4",
+    "nodemon": "^2.0.19",
+    "socket.io": "^4.5.1"
   }
 }
