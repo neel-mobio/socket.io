@@ -8,7 +8,7 @@ const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
 
-const socket = io();
+const socket = io();  // server side io function ne call karase..
 
 // Join chatroom
 socket.emit('joinRoom', { username, room });
@@ -19,9 +19,11 @@ socket.on('roomUsers', ({ room, users }) => {
   outputUsers(users);
 });
 
+
 // Message from server
+
 socket.on('message', (message) => {
-  console.log(message);
+  console.log(message); // welcom to reatime chat app given from server and whenever user type message here get it.
   outputMessage(message);
 
   // Scroll down
@@ -34,34 +36,39 @@ chatForm.addEventListener('submit', (e) => {
 
   // Get message text
   let msg = e.target.elements.msg.value;
+  
+  //   msg = msg.trim();
 
-  msg = msg.trim();
-
-  if (!msg) {
-    return false;
-  }
+  //   if (!msg) {
+  //     return false;
+  //   }
 
   // Emit message to server
   socket.emit('chatMessage', msg);
 
-  // Clear input
-  e.target.elements.msg.value = '';
-  e.target.elements.msg.focus();
+    // Clear input
+    e.target.elements.msg.value = '';
+    e.target.elements.msg.focus();
 });
 
 // Output message to DOM
 function outputMessage(message) {
   const div = document.createElement('div');
   div.classList.add('message');
-  const p = document.createElement('p');
-  p.classList.add('meta');
-  p.innerText = message.username;
-  p.innerHTML += `<span>${message.time}</span>`;
-  div.appendChild(p);
-  const para = document.createElement('p');
-  para.classList.add('text');
-  para.innerText = message.text;
-  div.appendChild(para);
+  div.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p>
+  <p class="text">
+    ${message.text}
+  </p>`
+  // div.classList.add('message');
+  // const p = document.createElement('p');
+  // p.classList.add('meta');
+  // p.innerText = message.username;
+  // p.innerHTML += `<span>${message.time}</span>`;
+  // div.appendChild(p);
+  // const para = document.createElement('p');
+  // para.classList.add('text');
+  // para.innerText = message.text;
+  // div.appendChild(para);
   document.querySelector('.chat-messages').appendChild(div);
 }
 
@@ -80,11 +87,11 @@ function outputUsers(users) {
   });
 }
 
-//Prompt the user before leave chat room
-document.getElementById('leave-btn').addEventListener('click', () => {
-  const leaveRoom = confirm('Are you sure you want to leave the chatroom?');
-  if (leaveRoom) {
-    window.location = '../index.html';
-  } else {
-  }
-});
+// //Prompt the user before leave chat room
+// document.getElementById('leave-btn').addEventListener('click', () => {
+//   const leaveRoom = confirm('Are you sure you want to leave the chatroom?');
+//   if (leaveRoom) {
+//     window.location = '../index.html';
+//   } else {
+//   }
+// });

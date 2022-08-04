@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  /* padding: 50px; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -40,9 +40,12 @@ a {
 .btn {
 	cursor: pointer;
 	padding: 5px 15px;
-	background: var(--light-color);
+	/* background: var(--light-color); */
+	background-color: #000;
 	color: var(--dark-color-a);
 	border: 0;
+	margin-left: 5px;
+	border-radius: 5px;
 	font-size: 17px;
 }
 
@@ -54,7 +57,10 @@ a {
 	margin: 30px auto;
 	overflow: hidden;
 }
-
+.inputt{
+	border: none;
+	border-radius: 5px;
+}
 .chat-header {
 	background: var(--dark-color-a);
 	color: #fff;
