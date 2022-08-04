@@ -16,9 +16,9 @@ const { userJion,
 //set static folder path
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', (req,res)=>{
-res.send("aaaa")
-});
+// app.get('/', (req,res)=>{
+//     return res.send("aaaa")
+// });
 
 const botName = "Admin"
 
@@ -74,6 +74,10 @@ io.on("connection", socket => {
 
 })
 
-server.listen(PORT, () => {
-    console.log("server Running on port 3000")
-})
+// server.listen(PORT, () => {
+//     console.log("server Running on port 3000")
+// })
+
+server.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
