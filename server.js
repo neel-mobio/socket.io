@@ -16,9 +16,9 @@ const { userJion,
 //set static folder path
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', (req,res)=>{
-// res.send("aaaa")
-// });
+app.use('/', (req,res)=>{
+res.send("aaaa")
+});
 
 const botName = "Admin"
 
